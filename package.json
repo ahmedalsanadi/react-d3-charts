@@ -30,9 +30,9 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
+    "d3": "^7.0.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "d3": "^7.0.0"
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
@@ -41,6 +41,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.1",
     "@types/d3": "^7.4.3",
+    "@types/node": "^22.13.5",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
