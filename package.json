@@ -1,12 +1,12 @@
 {
-  "name": "@ahmedalsanadi/react-d3-charts",
+  "name": "@ahmed_alsanadi/react-d3-charts",
   "version": "0.1.0",
   "description": "Beautiful, interactive React charting library built with D3.js featuring line charts, bar charts, and network graphs",
   "private": false,
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.umd.js", 
   "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts", 
   "files": [
     "dist",
     "README.md"
@@ -24,13 +24,15 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build", 
+    "prepare": "npm run build",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "d3": "^7.0.0",
+    "@types/d3": "^7.4.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },

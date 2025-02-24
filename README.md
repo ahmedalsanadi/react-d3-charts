@@ -15,7 +15,7 @@ A modern, lightweight React charting library built with D3.js.
 ## Installation
 
 ```bash
-npm install @yourusername/react-d3-charts
+npm install @ahmed_alsanadi/react-d3-charts
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ npm install @yourusername/react-d3-charts
 ### Line Chart
 
 ```tsx
-import { LineChart } from '@yourusername/react-d3-charts';
+import { LineChart } from '@ahmed_alsanadi/react-d3-charts';
 
 const data = [
   { x: 0, y: 10 },
@@ -47,7 +47,7 @@ function App() {
 ### Bar Chart
 
 ```tsx
-import { BarChart } from '@yourusername/react-d3-charts';
+import { BarChart } from '@ahmed_alsanadi/react-d3-charts';
 
 const data = [
   { x: 'A', y: 10 },
@@ -71,7 +71,7 @@ function App() {
 ### Network Graph
 
 ```tsx
-import { NetworkGraph } from '@yourusername/react-d3-charts';
+import { NetworkGraph } from '@ahmed_alsanadi/react-d3-charts';
 
 const data = {
   id: 'root',

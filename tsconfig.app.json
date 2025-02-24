@@ -11,14 +11,25 @@
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "noEmit": false,
     "jsx": "react-jsx",
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+
+      /* Declaration files */
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "emitDeclarationOnly": true,
+
+  /* Path resolution */
+    "rootDir": "./src/lib",
+    "outDir": "./dist"
   },
-  "include": ["src"]
+   "include": ["src/lib"],
+   "exclude": ["node_modules", "**/*.stories.tsx", "**/*.test.tsx"]
 }

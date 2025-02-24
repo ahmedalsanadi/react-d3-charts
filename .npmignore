@@ -1,0 +1,12 @@
+# .npmignore
+.*
+node_modules/
+src/
+*.tsbuildinfo
+public/
+*.local
+tsconfig.*
+vite.config.*
+eslint*
+postcss*
+tailwind*

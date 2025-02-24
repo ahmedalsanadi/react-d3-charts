@@ -1,3 +1,4 @@
+// vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
@@ -7,7 +8,8 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
-      insertTypesEntry: true,
+      entryRoot: 'src/lib',
+      tsconfigPath: './tsconfig.app.json', // Corrected property name
       rollupTypes: true,
       bundledPackages: ['zustand'],
     }),
@@ -27,13 +29,12 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
           d3: 'd3',
           zustand: 'zustand',
-          'lucide-react': 'lucide-react',
+          'lucide-react': 'LucideReact',
         },
-        preserveModules: true,
-        preserveModulesRoot: 'src/lib',
       },
     },
     sourcemap: true,
     minify: 'esbuild',
+    emptyOutDir: true,
   },
 });
