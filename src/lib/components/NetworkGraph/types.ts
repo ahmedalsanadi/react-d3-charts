@@ -1,4 +1,7 @@
-export interface NetworkNode {
+// src/lib/components/NetworkGraph/types.ts
+import { SimulationNodeDatum } from 'd3';
+
+export interface NetworkNode extends SimulationNodeDatum {
   id: string;
   label: string;
   description?: string;

@@ -1,3 +1,4 @@
+// src/lib/index.ts
 export { LineChart } from './components/LineChart/LineChart';
 export type { LineChartProps, DataPoint as LineDataPoint } from './components/LineChart/types';
 

@@ -1,3 +1,4 @@
+// src/lib/components/NetworkGraph/store.ts
 import { create } from 'zustand';
 import { NetworkNode, NetworkState } from './types';
 

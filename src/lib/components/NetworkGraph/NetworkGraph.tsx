@@ -55,33 +55,33 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
 
   useEffect(() => {
     if (!svgRef.current || !tooltipRef.current) return;
-
+  
     const svg = d3.select(svgRef.current);
     const tooltip = d3.select(tooltipRef.current);
     
     // Clear previous content
     svg.selectAll('*').remove();
-
+  
     const g = svg.append('g');
-
+  
     // Create zoom behavior
     const zoom = d3.zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.1, 4])
       .on('zoom', (event) => {
         g.attr('transform', event.transform);
       });
-
+  
     svg.call(zoom);
-
+  
     // Create force simulation
     const simulation = d3.forceSimulation<any>(nodes)
       .force('link', d3.forceLink<any, any>(links).id(d => d.id).distance(150))
       .force('charge', d3.forceManyBody().strength(-1000))
       .force('center', d3.forceCenter(width / 2, height / 2))
       .force('collision', d3.forceCollide().radius(d => 
-        d.children ? parentNodeRadius + 20 : nodeRadius + 20
+        (d as NetworkNode).children ? parentNodeRadius + 20 : nodeRadius + 20
       ));
-
+  
     // Create links
     const link = g.append('g')
       .selectAll('line')
@@ -90,7 +90,7 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
       .attr('stroke', linkColor)
       .attr('stroke-width', linkWidth)
       .attr('stroke-opacity', 0.6);
-
+  
     // Create node groups
     const node = g.append('g')
       .selectAll('g')
@@ -132,35 +132,35 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
           event.subject.fx = null;
           event.subject.fy = null;
         }));
-
+  
     // Add circles to nodes
     node.append('circle')
-      .attr('r', d => d.children ? parentNodeRadius : nodeRadius)
-      .attr('fill', d => d.children ? parentNodeColor : nodeColor)
+      .attr('r', d => (d as NetworkNode).children ? parentNodeRadius : nodeRadius)
+      .attr('fill', d => (d as NetworkNode).children ? parentNodeColor : nodeColor)
       .attr('stroke', '#fff')
       .attr('stroke-width', 2)
       .attr('opacity', 0.9);
-
+  
     // Add labels to nodes
     node.append('text')
-      .text(d => d.label)
+      .text(d => (d as NetworkNode).label)
       .attr('x', 0)
-      .attr('y', d => (d.children ? parentNodeRadius : nodeRadius) + 20)
+      .attr('y', d => ((d as NetworkNode).children ? parentNodeRadius : nodeRadius) + 20)
       .attr('text-anchor', 'middle')
       .attr('fill', '#1f2937')
       .attr('font-size', '12px')
-      .attr('font-weight', d => d.children ? 'bold' : 'normal');
-
+      .attr('font-weight', d => (d as NetworkNode).children ? 'bold' : 'normal');
+  
     // Add expandable indicator for nodes with children
-    node.filter(d => d.children)
+    node.filter(d => !!(d as NetworkNode).children)  // Cast to NetworkNode
       .append('circle')
       .attr('r', 4)
-      .attr('cx', d => (d.children ? parentNodeRadius : nodeRadius) * 0.7)
-      .attr('cy', d => -(d.children ? parentNodeRadius : nodeRadius) * 0.7)
+      .attr('cx', d => ((d as NetworkNode).children ? parentNodeRadius : nodeRadius) * 0.7)
+      .attr('cy', d => -((d as NetworkNode).children ? parentNodeRadius : nodeRadius) * 0.7)
       .attr('fill', '#fff')
-      .attr('stroke', d => d.children ? parentNodeColor : nodeColor)
+      .attr('stroke', d => (d as NetworkNode).children ? parentNodeColor : nodeColor)
       .attr('stroke-width', 2);
-
+  
     // Update positions on simulation tick
     simulation.on('tick', () => {
       link
@@ -168,10 +168,10 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
         .attr('y1', d => (d.source as any).y)
         .attr('x2', d => (d.target as any).x)
         .attr('y2', d => (d.target as any).y);
-
+  
       node.attr('transform', d => `translate(${d.x},${d.y})`);
     });
-
+  
     return () => {
       simulation.stop();
     };
