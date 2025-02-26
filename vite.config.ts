@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     dts({
       entryRoot: 'src/lib',
-      tsconfigPath: './tsconfig.app.json', // Corrected property name
+      tsconfigPath: './tsconfig.app.json', 
       rollupTypes: true,
       bundledPackages: ['zustand'],
     }),

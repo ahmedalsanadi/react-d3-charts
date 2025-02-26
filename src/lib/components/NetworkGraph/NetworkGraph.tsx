@@ -50,6 +50,7 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
 
   const { nodes, links } = useMemo(
     () => processData(data),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [data, selectedNode, isExpanded]
   );
 
@@ -175,7 +176,7 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
     return () => {
       simulation.stop();
     };
-  }, [nodes, links, width, height, nodeRadius, parentNodeRadius, nodeColor, parentNodeColor, linkColor, linkWidth]);
+  }, [nodes, links, width, height, nodeRadius, parentNodeRadius, nodeColor, parentNodeColor, linkColor, linkWidth, toggleNode, selectNode]);
 
   return (
     <div className="relative">
