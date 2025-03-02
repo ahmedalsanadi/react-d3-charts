@@ -1,3 +1,4 @@
+// src/lib/components/BarChart/types.ts
 export interface DataPoint {
   x: string;
   y: number;

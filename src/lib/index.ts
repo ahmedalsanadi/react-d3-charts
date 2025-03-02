@@ -7,3 +7,6 @@ export type { BarChartProps, DataPoint as BarDataPoint } from './components/BarC
 
 export { NetworkGraph } from './components/NetworkGraph/NetworkGraph';
 export type { NetworkGraphProps, NetworkNode } from './components/NetworkGraph/types';
+
+export { AdaptiveTreemap } from './components/AdaptiveTreemap/AdaptiveTreemap';
+export type { AdaptiveTreemapProps, TreemapNode , TreemapLayoutNode } from './components/AdaptiveTreemap/types';

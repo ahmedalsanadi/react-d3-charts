@@ -1,6 +1,6 @@
 {
   "name": "@ahmed_alsanadi/react-d3-charts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Beautiful, interactive React charting library built with D3.js featuring line charts, bar charts, and network graphs",
   "private": false,
   "type": "module",
